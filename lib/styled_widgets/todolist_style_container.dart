@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TodolistStyleContainer extends StatelessWidget {
-  const TodolistStyleContainer({super.key});
-
+  TodolistStyleContainer({int? count, Key? key})
+    : this.count = count,
+      super(key: key);
+  final int? count;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,8 +26,20 @@ class TodolistStyleContainer extends StatelessWidget {
         children: [
           Icon(Icons.app_registration),
 
-          Text(
-            "This is a random text and a proper stateful widget and flow is yet to be implemented",
+          Expanded(
+            child: Text(
+              "This is a random text and a proper stateful widget and flow is yet to be implemented ${count != null ? count.toString() : 0}",
+              maxLines: 1,
+              textWidthBasis: TextWidthBasis.parent,
+              overflow: TextOverflow.fade,
+              softWrap: false,
+              style: GoogleFonts.bricolageGrotesque(
+                textStyle: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           Row(
             children: [
