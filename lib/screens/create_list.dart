@@ -1,19 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/home.dart';
+import 'package:todoapp/provider/list_provider.dart';
 
 class CreateList extends StatelessWidget {
   const CreateList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _subjectController =
+        TextEditingController();
+
+    final TextEditingController _descriptionController =
+        TextEditingController();
+    for (var element in ListProvider().getAllTodoLists()) {
+      debugPrint(element["subject"]);
+    }
+    void createList() {
+      print(
+        '${_subjectController.text} and ${_descriptionController.text}',
+      );
+      ListProvider().addATodoList(
+        subject: _subjectController.text,
+        description: _descriptionController.text,
+      );
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (ctx) => const Home()),
+      );
+      // Navigator.pop(context);
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text('Create List')),
       body: SizedBox.expand(
-        child: Column(
-          children: [
-            TextField(),
-            SizedBox(height: 20),
-            TextField(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
+            vertical: 20,
+          ),
+          child: Column(
+            children: [
+              TextField(
+                controller: _subjectController,
+                decoration: InputDecoration(
+                  labelText: "Enter a subject",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                controller: _descriptionController,
+                decoration: InputDecoration(
+                  labelText: "Description",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () => createList(),
+                child: Text("Create"),
+              ),
+            ],
+          ),
         ),
       ),
     );
