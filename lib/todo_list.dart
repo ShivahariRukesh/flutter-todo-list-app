@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/screens/create_list.dart';
 import 'package:todoapp/styled_widgets/todolist_style_container.dart';
 
 class TodoList extends StatefulWidget {
@@ -11,14 +12,21 @@ class TodoList extends StatefulWidget {
 class _TodoList extends State<TodoList> {
   int count = 0;
 
-  void increaseCount() {
-    setState(() {
-      count++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    void increaseCount() {
+      // setState(() {
+      //   count++;
+      // });
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (ctx) => const CreateList(),
+        ),
+      );
+    }
+
     //SizeBox.expand Takes whole available screen
     //  Does it always fill the screen?
     // Not automatically. It fills the space given by its parent.

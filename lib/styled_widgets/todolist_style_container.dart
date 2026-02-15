@@ -29,13 +29,12 @@ class TodolistStyleContainer extends StatelessWidget {
           Expanded(
             child: Text(
               "This is a random text and a proper stateful widget and flow is yet to be implemented ${count != null ? count.toString() : 0}",
-              maxLines: 1,
-              textWidthBasis: TextWidthBasis.parent,
               overflow: TextOverflow.fade,
-              softWrap: false,
+              softWrap:
+                  false, //Doesn't add new line to show all text
               style: GoogleFonts.bricolageGrotesque(
                 textStyle: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
