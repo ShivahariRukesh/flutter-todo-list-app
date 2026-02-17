@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todoapp/todo_list.dart';
 
 class TodolistStyleContainer extends StatelessWidget {
-  TodolistStyleContainer({int? count, Key? key})
-    : this.count = count,
-      super(key: key);
-  final int? count;
+  TodolistStyleContainer({
+    Map<String, String>? todoItem,
+    Key? key,
+  }) : this.todoItem = todoItem,
+       super(key: key);
+
+  final Map<String, String>? todoItem;
+
   @override
   Widget build(BuildContext context) {
+    final todoTitle = todoItem?["title"] ?? "Null";
+    final todoDescription =
+        todoItem?["description"] ?? "Null";
     return Container(
       height: 100,
       margin: EdgeInsets.all(10),
@@ -28,7 +36,7 @@ class TodolistStyleContainer extends StatelessWidget {
 
           Expanded(
             child: Text(
-              "This is a random text and a proper stateful widget and flow is yet to be implemented ${count != null ? count.toString() : 0}",
+              "$todoTitle ----- $todoDescription",
               overflow: TextOverflow.fade,
               softWrap:
                   false, //Doesn't add new line to show all text

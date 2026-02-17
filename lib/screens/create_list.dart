@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/home.dart';
-import 'package:todoapp/provider/list_provider.dart';
+import 'package:todoapp/model/todolist_model.dart';
 
 class CreateList extends StatelessWidget {
   const CreateList({super.key});
@@ -12,17 +12,15 @@ class CreateList extends StatelessWidget {
 
     final TextEditingController _descriptionController =
         TextEditingController();
-    for (var element in ListProvider().getAllTodoLists()) {
-      debugPrint(element["subject"]);
-    }
+
     void createList() {
       print(
         '${_subjectController.text} and ${_descriptionController.text}',
       );
-      ListProvider().addATodoList(
-        subject: _subjectController.text,
-        description: _descriptionController.text,
-      );
+      // ListProvider().addATodoList(
+      //   subject: _subjectController.text,
+      //   description: _descriptionController.text,
+      // );
 
       Navigator.push(
         context,

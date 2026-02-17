@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/provider/list_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/model/todolist_model.dart';
 import 'package:todoapp/screens/create_list.dart';
 import 'package:todoapp/styled_widgets/todolist_style_container.dart';
 
@@ -11,15 +12,9 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoList extends State<TodoList> {
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
     void routeToCreateList() {
-      // setState(() {
-      //   count++;
-      // });
-
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -28,9 +23,6 @@ class _TodoList extends State<TodoList> {
       );
     }
 
-    for (var element in ListProvider().getAllTodoLists()) {
-      debugPrint(element["subject"]);
-    }
     //SizeBox.expand Takes whole available screen
     //  Does it always fill the screen?
     // Not automatically. It fills the space given by its parent.
@@ -42,14 +34,24 @@ class _TodoList extends State<TodoList> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment:
-                    CrossAxisAlignment.center,
-                children: [
-                  for (int i = 0; i < count; i++)
-                    TodolistStyleContainer(count: count),
-                ],
+              child: Consumer<TodoListModel>(
+                builder: (context, todo, child) {
+                  return Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.center,
+                    children: [
+                      for (
+                        int i = 0;
+                        i < todo.todolist.length;
+                        i++
+                      )
+                        TodolistStyleContainer(
+                          todoItem: todo.todolist[i],
+                        ),
+                    ],
+                  );
+                },
               ),
             ),
             Center(

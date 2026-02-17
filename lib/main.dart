@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/home.dart';
-import 'package:todoapp/model/list_provider.dart';
+import 'package:todoapp/model/todolist_model.dart';
 
 void main() {
   runApp(
