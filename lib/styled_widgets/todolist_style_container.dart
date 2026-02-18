@@ -35,17 +35,35 @@ class TodolistStyleContainer extends StatelessWidget {
           Icon(Icons.app_registration),
 
           Expanded(
-            child: Text(
-              "$todoTitle ----- $todoDescription",
-              overflow: TextOverflow.fade,
-              softWrap:
-                  false, //Doesn't add new line to show all text
-              style: GoogleFonts.bricolageGrotesque(
-                textStyle: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  "$todoTitle",
+                  overflow: TextOverflow.fade,
+                  softWrap:
+                      false, //Doesn't add new line to show all text
+                  style: GoogleFonts.bricolageGrotesque(
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
+                Text(
+                  "$todoDescription",
+                  overflow: TextOverflow.fade,
+                  softWrap:
+                      false, //Doesn't add new line to show all text
+                  style: GoogleFonts.bricolageGrotesque(
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Row(
