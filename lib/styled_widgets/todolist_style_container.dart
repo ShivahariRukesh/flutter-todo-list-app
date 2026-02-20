@@ -40,7 +40,7 @@ class TodolistStyleContainer extends StatelessWidget {
                   MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  "$todoTitle",
+                  todoTitle,
                   overflow: TextOverflow.fade,
                   softWrap:
                       false, //Doesn't add new line to show all text
@@ -52,7 +52,7 @@ class TodolistStyleContainer extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "$todoDescription",
+                  todoDescription,
                   overflow: TextOverflow.fade,
                   softWrap:
                       false, //Doesn't add new line to show all text

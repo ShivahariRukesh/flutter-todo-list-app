@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/home.dart';
 import 'package:todoapp/model/todolist_model.dart';
 
@@ -17,6 +18,13 @@ class CreateList extends StatelessWidget {
       print(
         '${_subjectController.text} and ${_descriptionController.text}',
       );
+
+      var todo_list = context.read<TodoListModel>();
+
+      todo_list.add({
+        "title": _subjectController.text,
+        "description": _descriptionController.text,
+      });
       // ListProvider().addATodoList(
       //   subject: _subjectController.text,
       //   description: _descriptionController.text,
